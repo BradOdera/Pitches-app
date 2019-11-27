@@ -1,0 +1,77 @@
+{%extends 'base.html' %}
+
+
+
+{% block content %}
+
+<!-- Content block -->
+
+<!-- background block  -->
+{% block background %}
+{% include 'image.html' %}
+{% endblock %}
+
+
+<!-- Content block -->
+<br>
+
+{% for pitch in pitches %}
+<!-- Pitch jumbotron -->
+<div class="container">
+    <div class="jumbotron text-center hoverable p-4">
+
+        <!-- Grid row -->
+        <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-md-4 offset-md-1 mx-3 my-3">
+
+                <!-- Featured image -->
+                <div class="view overlay">
+                    <img src="https://mdbootstrap.com/img/Photos/Others/laptop-sm.jpg" class="img-fluid"
+                        alt="Sample image for first version of blog listing">
+                    <a>
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-7 text-md-left ml-3 mt-3">
+
+                <!-- Excerpt -->
+                <a href="#!" class="green-text">
+                    <h6 class="h6 pb-1"><i class="fas fa-desktop pr-1"></i> {{pitch.author.username}}</h6>
+                </a>
+
+                <h4 class="h4 mb-4">Pitch Title: {{ pitch.title }}</h4>
+
+                <p class="font-weight-normal">{{ pitch.content }}</p>
+                <p class="font-weight-normal">by <a><strong> {{ pitch.author.username}}</strong></a>,
+                    {{ pitch.date_posted.strftime('%Y-%m-%d')}}</p>
+
+                <br>
+                <!-- vote buttons -->
+                <div class="ui buttons">
+                    <button class="ui blue-outline button">
+                        <i class="thumbs up icon"></i>20
+                    </button>
+                    <div class="or"></div>
+                    <button class="ui positive button">
+                        <i class="thumbs down icon"></i>5
+                    </button>
+                </div>
+
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+
+    </div>
+</div>
+<!-- News jumbotron -->
+{% endfor %}
+{% endblock content%}
